@@ -13,7 +13,7 @@ export function BrandLockup({ compact=false, inverse=false }:{ compact?:boolean;
   return <div className={`huiduLockup ${compact?'isCompact':''} ${inverse?'isInverse':''}`}>
     <BrandLogo compact={compact}/>
     <span className="huiduDivider" aria-hidden="true" />
-    <span className="huiduSlogan"><b>神经病学年会</b>{!compact&&<small>NEURO 2026 · {BRAND_SLOGAN_CN}</small>}</span>
+    <span className="huiduSlogan"><b>神经病学年会</b>{!compact&&<small>CMANCN 2026 · {BRAND_SLOGAN_CN}</small>}</span>
   </div>;
 }
 

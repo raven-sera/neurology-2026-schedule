@@ -41,7 +41,7 @@ function foldLine(line: string) {
   return [...lines, current].join('\r\n');
 }
 export function createCalendarFile(reports: readonly Report[], now = Date.now()) {
-  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Huidu//NEURO 2026//ZH', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Huidu//CMANCN 2026//ZH', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
   for (const report of reports) {
     const interval = reportInterval(report);
     if (!interval) continue;
@@ -54,7 +54,7 @@ export function downloadCalendar(reports: readonly Report[]) {
   const blob = new Blob([createCalendarFile(reports)], { type:'text/calendar;charset=utf-8' });
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
-  link.href = url; link.download = 'NEURO2026-我的日程.ics'; link.click();
+  link.href = url; link.download = 'CMANCN 2026-我的日程.ics'; link.click();
   setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
 

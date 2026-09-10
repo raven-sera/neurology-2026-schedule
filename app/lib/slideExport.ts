@@ -45,7 +45,7 @@ async function cover(report:Report,count:number) {
       ctx.font=font;
       blocks.push({lines:wrap(ctx,text,width),font,lineHeight:Math.ceil(size*1.55),color,gap});
     };
-    add('NEURO 2026 · 报告 PPT 图集',27,true,'#002fa7',26);
+    add('CMANCN 2026 · 报告 PPT 图集',27,true,'#002fa7',26);
     add(report.sourceTitle,44,true,'#071b56',34);
     add(`报告 ID：${report.id}　·　${count} 张 PPT`,25,false,'#566887',30);
     const fields:[string,string][]=[
@@ -79,7 +79,7 @@ export async function buildSlideExport(report:Report,slides:StoredSlide[],format
   // Snapshot the selection before the first await so edits during export cannot mix versions.
   const images=slides.map((slide)=>({name:slide.name,blob:selectedImage(slide)}));
   const reportSnapshot={...report,directions:[...report.directions]};
-  const basename=`NEURO2026-报告${report.id}-${safeFilename(report.sourceTitle)}`;
+  const basename=`CMANCN 2026-报告${report.id}-${safeFilename(report.sourceTitle)}`;
   const total=images.length+1;
   onProgress?.(0,total);
   const first=await cover(reportSnapshot,images.length);
@@ -87,7 +87,7 @@ export async function buildSlideExport(report:Report,slides:StoredSlide[],format
     // A naturally tall cover preserves every wrapped line at a readable physical font size.
     const coverWidth=210,coverHeight=coverWidth*first.height/first.width;
     const pdf=new jsPDF({unit:'mm',format:[coverWidth,coverHeight],orientation:'portrait',compress:true});
-    pdf.setProperties({title:reportSnapshot.sourceTitle,subject:`神经病学年会报告 ${reportSnapshot.id}`,author:reportSnapshot.speaker,creator:'NEURO 2026 本地图集'});
+    pdf.setProperties({title:reportSnapshot.sourceTitle,subject:`神经病学年会报告 ${reportSnapshot.id}`,author:reportSnapshot.speaker,creator:'CMANCN 2026 本地图集'});
     pdf.addImage(new Uint8Array(await first.blob.arrayBuffer()),'PNG',0,0,coverWidth,coverHeight,'cover','FAST');
     onProgress?.(1,total);
     for (let i=0;i<images.length;i++) {

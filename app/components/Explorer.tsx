@@ -321,14 +321,14 @@ function SiteHeader({ activePage }: { activePage: ActivePage }) {
           </Link>
         ))}
       </nav>
-      <span className="edition">NEURO 2026</span>
+      <span className="edition">CMANCN 2026</span>
     </header>
   );
 }
 
 function Hero({ entries }: { entries: LibrarySummary[] }) {
   return <section className="workspaceHero" id="top">
-    <div><p className="workspaceEyebrow">NEURO 2026 · 9.11—9.13</p><h1>神经病学年会<em>2026</em></h1>
+    <div><p className="workspaceEyebrow">CMANCN 2026 · 9.11—9.13</p><h1>神经病学年会<em>2026</em></h1>
       <p>9.11—9.13 三日日程，检索 {reports.length} 条会议内容，收藏、排期与听会记录一处管理。</p>
       <dl>{HERO_METRICS.map(metric => <div key={metric.label}><dt>{metric.value}</dt><dd>{metric.label}</dd></div>)}</dl>
     </div>

@@ -85,7 +85,7 @@ export default function CheckInCard({ location, record, isFresh, onClose }: Chec
       });
       const link = document.createElement('a');
       const stamp = record.checkedAt.slice(0, 16).replaceAll(/[-:T]/g, '');
-      link.download = `NEURO2026-现场打卡-${stamp}.png`;
+      link.download = `CMANCN 2026-现场打卡-${stamp}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
       setSaved(true);
@@ -108,7 +108,7 @@ export default function CheckInCard({ location, record, isFresh, onClose }: Chec
         </header>
         <figure className="checkInCard" data-artwork={record.visualSeed % 3} style={artworkStyle} ref={cardRef}>
           <header className="checkInCardHeader">
-            <span><b>NEURO</b><small>2026 · ON SITE</small></span>
+            <span><b>CMANCN</b><small>2026 · ON SITE</small></span>
             <i>CHECKED IN</i>
           </header>
           <main className="checkInCardScene">
@@ -125,7 +125,7 @@ export default function CheckInCard({ location, record, isFresh, onClose }: Chec
               <div><dt>打卡时间</dt><dd>{checkedAt}</dd></div>
               <div><dt>打卡地点</dt><dd>{location || '地点待公布'}</dd></div>
             </dl>
-            <span>NEURO 2026 · ATTENDANCE MEMORY</span>
+            <span>CMANCN 2026 · ATTENDANCE MEMORY</span>
           </footer>
         </figure>
         <footer className="checkInModalActions">

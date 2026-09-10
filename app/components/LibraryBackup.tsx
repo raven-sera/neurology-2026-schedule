@@ -58,7 +58,7 @@ export default function LibraryBackup({ onClose }: { onClose: () => void }) {
       const blob = await createLibraryArchive(snapshot, updateProgress);
       if (!alive.current) return;
       url.current = URL.createObjectURL(blob);
-      setDownload({ url: url.current, filename: `NEURO2026-个人资料库-${new Date().toISOString().replace(/[:.]/g, '-')}.zip`, size: blob.size });
+      setDownload({ url: url.current, filename: `CMANCN 2026-个人资料库-${new Date().toISOString().replace(/[:.]/g, '-')}.zip`, size: blob.size });
       setNotice('ZIP 已准备好。请点击“下载备份 ZIP”保存到自己的安全位置。');
     } catch (cause) { if (alive.current) setError(errorMessage(cause)); }
     finally { finish(); }

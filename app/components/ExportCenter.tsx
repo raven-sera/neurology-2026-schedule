@@ -438,7 +438,7 @@ function ScheduleDocument({ reports }:{reports:Report[]}) {
   return <div className="pdfDocument scheduleDocument">
     <div className="scheduleMeasure" ref={measureRef} aria-hidden="true">
       <section className="scheduleMeasurePage">
-        <div className="pdfBrandBar"><BrandLockup compact/></div><header className="pdfCoverHeader"><div><span>PERSONAL ITINERARY · NEURO 2026</span><h1>我的听会日程</h1></div><aside><b>{reports.length}</b><span>场已选报告</span></aside></header>
+        <div className="pdfBrandBar"><BrandLockup compact/></div><header className="pdfCoverHeader"><div><span>PERSONAL ITINERARY · CMANCN 2026</span><h1>我的听会日程</h1></div><aside><b>{reports.length}</b><span>场已选报告</span></aside></header>
         <p className="pdfIntro">按大会日期与报告开始时间排序。场地仍以大会最终通知为准。</p>
         <header className="scheduleContinuationHeader"><BrandLockup compact/><b>我的听会日程 · 续</b></header>
         {groups.map(([day,items])=><ScheduleTable key={day} day={day} items={items} measure/>)}
@@ -447,7 +447,7 @@ function ScheduleDocument({ reports }:{reports:Report[]}) {
     </div>
     {pages.map((page,pageIndex)=><section className="pdfPage schedulePdfPage" key={pageIndex}>
       {page.first
-        ? <><div className="pdfBrandBar"><BrandLockup compact/></div><header className="pdfCoverHeader"><div><span>PERSONAL ITINERARY · NEURO 2026</span><h1>我的听会日程</h1></div><aside><b>{reports.length}</b><span>场已选报告</span></aside></header><p className="pdfIntro">按大会日期与报告开始时间排序。日程表不包含笔记内容；“参会打卡”可用于打印后手写勾选。场地仍以大会最终通知为准。</p></>
+        ? <><div className="pdfBrandBar"><BrandLockup compact/></div><header className="pdfCoverHeader"><div><span>PERSONAL ITINERARY · CMANCN 2026</span><h1>我的听会日程</h1></div><aside><b>{reports.length}</b><span>场已选报告</span></aside></header><p className="pdfIntro">按大会日期与报告开始时间排序。日程表不包含笔记内容；“参会打卡”可用于打印后手写勾选。场地仍以大会最终通知为准。</p></>
         : <header className="scheduleContinuationHeader"><BrandLockup compact/><b>我的听会日程 · {pageIndex+1}</b></header>}
       <div className="schedulePageBody">{page.blocks.map((block,index)=><ScheduleTable key={`${block.day}-${index}`} day={block.day} items={block.items} continued={block.continued}/>)}</div>
       <footer className="pdfFooter"><HuiduQrCallout compact/><b>{pageIndex+1} / {pages.length} · 私人定制</b></footer>
@@ -485,7 +485,7 @@ function ScheduleCalendarDocument({ reports }:{reports:Report[]}) {
     {ranges.map(({startMinute,endMinute},pageIndex)=><section className="pdfPage calendarPdfPage" key={startMinute}>
       <div className="pdfBrandBar"><BrandLockup compact/></div>
       <header className="pdfCoverHeader">
-        <div><span>CONFERENCE CALENDAR · NEURO 2026</span><h1>我的听会日历</h1></div>
+        <div><span>CONFERENCE CALENDAR · CMANCN 2026</span><h1>我的听会日历</h1></div>
         <aside><b>{reports.length}</b><span>场已选报告</span></aside>
       </header>
       <p className="pdfIntro">第 {pageIndex+1} 页 · {formatCalendarMinute(startMinute)}–{formatCalendarMinute(endMinute)}；三天报告按真实时间位置排列，同时段报告并列呈现。</p>
@@ -597,7 +597,7 @@ function BatchReportNotes({report,note}:{report:Report;note:string}) {
     >
       <header className="batchNoteMasthead">
         <BrandLockup compact/>
-        <div><span>NEURO 2026 · REPORT NOTES</span><b>{report.speaker}</b></div>
+        <div><span>CMANCN 2026 · REPORT NOTES</span><b>{report.speaker}</b></div>
       </header>
       <section className="batchNoteReportCard" data-pdf-keep>
         <div className="batchNoteKicker"><span>{report.field} · {report.directions.slice(0,2).join(' / ')}</span></div>
@@ -720,10 +720,10 @@ export default function ExportCenter({
         const rect=source.getBoundingClientRect();
         if(rect.width<500||rect.height<500||rect.left<-1)throw new Error(`PDF render source is outside the capture area: ${JSON.stringify({width:rect.width,height:rect.height,left:rect.left})}`);
         const nextFilename=mode==='schedule'
-          ? 'NEURO2026-私人听会日程-表格版.pdf'
+          ? 'CMANCN 2026-私人听会日程-表格版.pdf'
           : mode==='calendar'
-            ? 'NEURO2026-私人听会日程-日历版.pdf'
-            : 'NEURO2026-听会笔记.pdf';
+            ? 'CMANCN 2026-私人听会日程-日历版.pdf'
+            : 'CMANCN 2026-听会笔记.pdf';
         const {blob,previews}=await renderPdf(source,rect,mode==='calendar'?{orientation:'landscape'}:undefined);
         if(blob.size<8000)throw new Error(`Generated PDF is unexpectedly small (${blob.size} bytes).`);
         if(cancelled)return;

@@ -674,13 +674,13 @@ function SingleNoteDocument({ report, html, textLength, recordings, photos, meta
       <header className="singleNotePageChromeHeader" data-pdf-page-header>
         <BrandLockup compact />
         <div>
-          <span>NEURO 2026 · REPORT NOTE</span>
+          <span>CMANCN 2026 · REPORT NOTE</span>
           <b>{report.speaker} · {report.field}</b>
         </div>
       </header>
       <main className="singleNotePageContent" data-pdf-page-content>
         <header className="singleNoteHeader" data-pdf-keep>
-          <div><span>NEURO 2026 · REPORT NOTE</span><h1>单场听会笔记</h1></div>
+          <div><span>CMANCN 2026 · REPORT NOTE</span><h1>单场听会笔记</h1></div>
         </header>
         <section className="singleNoteReport notebookPdfMetadata">
           <small>{report.field} · {report.directions.join(' / ')}</small>
@@ -752,7 +752,7 @@ function SingleNoteExport({ report, html, textLength, recordings, photos, meta, 
   const [errorMessage, setErrorMessage] = useState('');
   useDialog('.singleNoteExportOverlay', onClose, portalReady);
   const sourceRef = useRef<HTMLDivElement>(null);
-  const filename = `NEURO2026-${safeFilename(report.speaker)}-听会笔记.pdf`;
+  const filename = `CMANCN 2026-${safeFilename(report.speaker)}-听会笔记.pdf`;
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => setPortalReady(true));

@@ -73,7 +73,7 @@ export default function CheckInAtlas({ records, onClose }: CheckInAtlasProps) {
               >
                 <header><span>NO. {String(index + 1).padStart(2, '0')}</span><b>{unlocked ? 'UNLOCKED' : 'LOCKED'}</b></header>
                 <div className="checkInAtlasCardBody">
-                  <span className="checkInAtlasEmblem" aria-hidden>{unlocked ? 'NEURO' : '?'}</span>
+                  <span className="checkInAtlasEmblem" aria-hidden>{unlocked ? 'CMANCN' : '?'}</span>
                   <blockquote>{unlocked ? phrase : '尚未相遇'}</blockquote>
                 </div>
                 <footer>
