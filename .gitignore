@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+*.log
+__pycache__/
+.verification/
+本地网站备份.zip

@@ -1,0 +1,92 @@
+.notebook { min-width:0; color:var(--ink,#071b56); }
+.notebookHeader { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; }
+.notebookHeader h3 { margin:4px 0 0; font-size:24px; }
+.notebook button,.notebook input,.notebook select,.notebook .recordingActions a { min-height:44px; }
+.notebook button { cursor:pointer; }
+.notebook button:disabled { cursor:not-allowed; opacity:.5; }
+.notebookHeader > button,.notebookTextHeading > button,.notebookTags > button,.notebookRecordingBanner button { border:1px solid #36476f; border-radius:8px; padding:9px 14px; background:#ffffff; color:#071b56; font-size:14px; font-weight:700; }
+.notebookTabs { position:sticky; top:var(--notebook-topbar-height,64px); z-index:8; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; padding:5px; margin:0 0 12px; border:1px solid #c6d2ed; border-radius:12px; background:#e6ecfb; box-shadow:0 3px 12px #071b5608; scroll-margin-top:calc(var(--notebook-topbar-height,64px) + 12px); }
+.notebookTabs > button { display:flex; align-items:center; justify-content:center; gap:8px; min-width:0; border:0; border-radius:8px; background:transparent; color:#3c4f7c; font-family:inherit; font-size:15px; line-height:1.2; font-weight:700; }
+.notebookTabs > button[aria-selected="true"] { background:#071b56; color:white; }
+.notebookTabs small { font-size:12px; font-weight:500; }
+.notebookTabs i { width:8px; height:8px; border-radius:50%; background:#b74734; outline:2px solid white; }
+.notebookWorkspace { min-width:0; margin:0; padding:0; border:0; display:grid; grid-template-columns:minmax(0,1fr); gap:16px; }
+.notebookWorkspace > [hidden] { display:none!important; }
+.notebookSlidePane,.notebookTextPane,.notebookAudioPane { min-width:0; }
+.notebookTextPane { border:1px solid #c6d2ed; border-radius:12px; padding:14px; background:#f4f7fd; }
+.notebookTextHeading { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:0 0 12px; }
+.notebookTextHeading h4 { margin:0; font-size:17px; }
+.notebookTextHeading h4 small { display:block; margin-top:4px; color:#486097; font-size:12px; font-weight:400; }
+.notebook .noteToolbar { padding:8px; gap:7px; border-radius:8px 8px 0 0; background:#e5ebfb; }
+.notebook .noteToolbarSelect { min-width:0; }
+.notebook .noteToolbarSelect select { min-height:44px; }
+.notebook .noteToolbarButtons button { min-width:44px; min-height:44px; }
+.notebook .noteToolbarUtility { flex-wrap:wrap; }
+.notebook .noteColorTools label { min-width:44px; min-height:44px; }
+.notebook .notebookTextScroll { max-height:65dvh; min-height:300px; overflow:auto; overscroll-behavior:contain; background-color:white; scrollbar-gutter:stable; }
+.notebook .notebookTextScroll .tiptap { min-height:300px; padding:18px; }
+.notebook[data-mode="read"] .notebookTextScroll { border-radius:8px; background-image:none; }
+.notebook[data-mode="read"] .notebookTextScroll:focus-within { box-shadow:none; }
+.notebook .noteRichContent { font-size:16px; line-height:1.85; }
+.notebook .noteRichContent a[href^="#neuro2026-slide="] { color:#1b3061; text-decoration:underline; text-underline-offset:3px; cursor:pointer; padding:3px 0; }
+.notebook .noteEditorFooter { flex-wrap:wrap; gap:8px; margin-top:10px; }
+.notebook .noteEditorFooter > span { font-size:12px; }
+.notebook .audioNoteSection { display:block!important; margin-top:0; background:#e9effc; padding:16px; }
+.notebook .recordingCard { min-width:0; }
+.notebook .recordingContent { min-width:0; }
+.notebook .recordingContent audio { width:100%; max-width:100%; min-height:44px; }
+.notebook .recordingContent input { width:100%; font-size:15px; }
+.notebookRecordingBanner { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; padding:10px 12px; margin-bottom:12px; border:1px solid #7389bc; border-radius:8px; color:#2c3a5b; background:#ecf1fc; font-size:14px; }
+.notebookTags { display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:8px 12px; align-items:center; margin-top:16px; padding:12px; border:1px solid #c6d2ed; border-radius:10px; background:#e6ecfb; }
+.notebookTags > label { font-size:14px; font-weight:700; }
+.notebookTags > input { min-width:0; border:1px solid #a7b9e4; border-radius:6px; padding:8px 10px; background:white; color:#071b56; font-size:16px; }
+.notebookTags > span { grid-column:2/-1; color:#486097; font-size:12px; }
+.notebook .notebookLocalNotice { margin:12px 0 0; color:#486097; font-size:12px; line-height:1.7; }
+.notebookProgress { padding:12px; background:#e5ebfb; color:#071b56; font-size:14px; }
+.notebook button:focus-visible,.notebook input:focus-visible,.notebook select:focus-visible,.notebook a:focus-visible { outline:3px solid #536eac; outline-offset:2px; }
+.singleNoteDocument .notebookPdfMetadata { background:#dee6fa; }
+.singleNoteDocument .notebookPdfMetadata > div { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.singleNoteDocument .notebookPdfMetadata > div span { padding:2.5mm 2mm; font-size:8pt; line-height:1.5; overflow-wrap:anywhere; }
+.singleNoteDocument .notebookPdfMetadata i { font-size:6.5pt; }
+.singleNoteDocument .notebookPdfOfficial { grid-column:1/-1; }
+.singleNoteDocument .singleNoteRichText { min-height:30mm; }
+.notebookPdfSlides h2 { font-size:15pt; margin:5mm 0; }
+.notebookPdfSlides article { margin:0 0 6mm; }
+.notebookPdfSlides figure { margin:0; padding:3mm; border:.3mm solid #a2b6e3; background:white; }
+.notebookPdfSlides figcaption { display:flex; flex-wrap:wrap; align-items:center; gap:2mm; margin:0 0 3mm; font-size:9pt; line-height:1.5; overflow-wrap:anywhere; }
+.notebookPdfSlides figcaption b { flex:1; }
+.notebookPdfSlides figcaption strong { border:.3mm solid #36476f; border-radius:1mm; padding:.5mm 2mm; color:#071b56; font-size:8pt; }
+.notebookPdfSlides figcaption span { flex-basis:100%; color:#3f5383; font-size:7pt; }
+.notebookPdfSlides img { display:block; width:100%; height:auto; max-height:155mm; object-fit:contain; }
+.notebookPdfPhotoId { margin:1.5mm 0; color:#3f5383; font-size:6.5pt; overflow-wrap:anywhere; }
+.notebookPdfAnnotation { padding:3mm; background:#e5ebfb; font-size:9pt; line-height:1.7; }
+.notebookPdfAnnotation p { white-space:pre-wrap; overflow-wrap:anywhere; margin:1mm 0 0; }
+.notebookPdfAudioNotice { padding:3mm; background:#e5ebfb; font-size:8.5pt; line-height:1.7; }
+.singleNoteDocument .pdfRecordingList > header { background:#071b56; color:white; }
+.singleNoteDocument .pdfRecordingList > div > b { color:#36476f; }
+.singleNoteDocument .pdfRecordingList > div > small { font-size:7pt; line-height:1.6; }
+@media (min-width:1000px) {
+  .notebook[data-section="slides"] .notebookWorkspace,.notebook[data-section="text"] .notebookWorkspace { grid-template-columns:minmax(0,1.12fr) minmax(0,1fr); align-items:start; }
+  .notebookTextPane { position:sticky; top:calc(var(--notebook-topbar-height,64px) + 70px); }
+  .notebook .notebookTextScroll { max-height:65dvh; }
+}
+@media (max-width:600px) {
+  .notebookHeader { align-items:center; }
+  .notebookHeader h3 { font-size:21px; }
+  .notebookHeader > button { padding:8px 10px; font-size:13px; }
+  .notebookTabs > button { gap:5px; }
+  .notebookTextPane { padding:10px; }
+  .notebook .notebookTextScroll .tiptap { padding:14px; }
+  .notebook .noteToolbar { flex-wrap:wrap; }
+  .notebook .noteToolbarUtility { width:100%; }
+  .notebook .audioNoteSection { padding:12px; }
+  .notebook .recorderConsole { display:flex; flex-direction:column; align-items:stretch; gap:12px; }
+  .notebook .recordingCard { display:flex; flex-wrap:wrap; gap:10px; padding:12px; }
+  .notebook .recordingIndex { display:none; }
+  .notebook .recordingContent { flex:1 1 100%; }
+  .notebook .recordingActions { display:flex; flex-direction:row; gap:10px; width:100%; }
+  .notebook .recordingActions > * { flex:1; display:flex; align-items:center; justify-content:center; }
+  .notebookTags { grid-template-columns:minmax(0,1fr) auto; padding:10px; }
+  .notebookTags > label { grid-column:1/-1; }
+  .notebookTags > span { grid-column:1/-1; }
+}

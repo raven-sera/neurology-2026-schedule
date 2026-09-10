@@ -1,0 +1,41 @@
+@media screen {
+  .libraryPage { min-height:100svh; }
+  .notebookDetailOverlay { background:#f4f7ff; }
+  .notebookDetailShell { --notebook-topbar-height:64px; max-width:1600px; margin:auto; min-height:100svh; background:#f4f7ff; }
+  .notebookDetailShell .detailTopbar { background:#f4f7fff5; min-height:64px; height:auto; padding:10px clamp(16px,4vw,64px); border-bottom:1px solid #d6e0f1; z-index:25; }
+  .notebookReportHeader { padding:24px clamp(16px,4vw,64px) 12px; }
+  .notebookReportHeader > p { margin:0 0 8px; color:#3d507e; font-size:14px; font-weight:700; }
+  .notebookReportHeader h1 { max-width:1200px; margin:0; font:750 clamp(21px,2.2vw,32px)/1.5 Arial,"Microsoft YaHei",sans-serif; color:#112344; overflow-wrap:anywhere; }
+  .notebookReportLine { display:flex; flex-wrap:wrap; gap:4px 20px; margin-top:12px; color:#5b6d8b; font-size:14px; }
+  .notebookReportDetails { margin-top:10px; color:#344769; font-size:14px; }
+  .notebookReportDetails summary { display:list-item; cursor:pointer; min-height:44px; padding:10px 0; }
+  .notebookReportDetails dl { display:grid; gap:8px; margin:4px 0 12px; }
+  .notebookReportDetails dl > div { display:flex; gap:16px; }
+  .notebookReportDetails dt { flex:none; min-width:44px; color:#5b6d8b; }
+  .notebookReportDetails dd { margin:0; }
+  .notebookReportDetails > div,.notebookQuickActions { display:flex; gap:8px; flex-wrap:wrap; }
+  .notebookReportDetails button,.notebookReportDetails a,.notebookQuickActions button { min-height:44px; padding:8px 15px; border:1px solid #d6e0f1; border-radius:10px; background:#ffffff; font:600 14px/1.5 Arial,"Microsoft YaHei",sans-serif; color:#112344; cursor:pointer; }
+  .notebookQuickActions { margin:12px 0 0; }
+  .notebookQuickActions button:first-child { background:#002fa7; border-color:#002fa7; color:#ffffff; }
+  .notebookDetailContent { padding:0 clamp(16px,4vw,64px) 40px; }
+  .notebookDetailContent > .learningSection { margin-top:0; padding-top:16px; border-top:0; }
+  .librarySpotlight { display:flex; flex-direction:column; gap:8px; padding:20px; border:1px solid #d6e0f1; border-radius:16px; background:#ffffff; color:#112344; }
+  .librarySpotlight > span { font-size:12px; color:#5b6d8b; letter-spacing:.08em; }
+  .librarySpotlight strong { font-size:20px; }
+  .librarySpotlight p { margin:0; font-size:14px; color:#5b6d8b; }
+  .librarySpotlight b { font-size:14px; }
+  .scheduleItemNotes { background:#d8e2f9!important; border:1px solid #6485d0!important; color:#112344!important; }
+  .notebookDetailShell button:focus-visible,.notebookDetailShell a:focus-visible { outline:3px solid #5069a5; outline-offset:3px; }
+  @media(max-width:760px) {
+    .notebookDetailShell { --notebook-topbar-height:60px; }
+    .notebookDetailShell .detailTopbar { min-height:60px; padding:8px 16px; gap:8px; }
+    .notebookDetailShell .detailTopActions { gap:6px; }
+    .notebookDetailShell .detailTopActions a { display:inline-flex; font-size:12px; align-items:center; }
+    .notebookReportHeader { padding-top:18px; }
+    .notebookReportHeader h1 { font-size:21px; }
+    .notebookReportLine { font-size:13px; }
+    .notebookQuickActions { display:grid; grid-template-columns:1fr 1fr 1.2fr; }
+    .notebookQuickActions button { padding:8px; font-size:13px; }
+    .notebookDetailContent { padding-bottom:calc(24px + env(safe-area-inset-bottom)); }
+  }
+}

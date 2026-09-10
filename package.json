@@ -1,0 +1,45 @@
+{
+  "name": "neurology-2026-schedule",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.13.0" },
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "build:github": "node scripts/build-github-pages.mjs",
+    "preview": "node scripts/preview.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test:calendar": "node scripts/test-calendar-export.mjs"
+  },
+  "dependencies": {
+    "@tiptap/core": "3.30.5",
+    "@tiptap/extension-image": "3.30.5",
+    "@tiptap/extension-text-style": "3.30.5",
+    "@tiptap/extension-underline": "3.30.5",
+    "@tiptap/pm": "3.30.5",
+    "@tiptap/react": "3.30.5",
+    "@tiptap/starter-kit": "3.30.5",
+    "fflate": "0.8.2",
+    "html2canvas": "1.4.1",
+    "jspdf": "3.0.4",
+    "next": "16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "@tiptap/extension-bubble-menu": "3.30.5",
+    "@tiptap/extension-floating-menu": "3.30.5"
+  }
+}
