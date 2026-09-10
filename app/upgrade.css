@@ -42,6 +42,7 @@
   .workspaceShortcuts strong { font-size:16px; }
   .workspaceShortcuts small { font-size:12px; color:var(--muted); }
   .workspaceShortcuts b { margin-left:auto; }
+  .workspaceShortcuts > button { cursor:pointer; }
   .searchDock { margin:0 var(--page-gutter) 20px; border-radius:16px; box-shadow:var(--shadow-sm); gap:16px 20px; background:#ffffff; backdrop-filter:none; }
   .searchIntro label { font-size:16px; }
   .searchIntro > span { font-size:12px; }
@@ -134,14 +135,6 @@
   .workspaceHero > * { position:relative; z-index:1; min-width:0; }
   .workspaceHero::before { content:""; position:absolute; z-index:0; top:-170px; right:10%; width:440px; height:540px; border:1px solid rgba(188,214,255,.24); border-radius:50%; transform:rotate(35deg); box-shadow:0 0 0 35px rgba(188,214,255,.045),0 0 0 70px rgba(188,214,255,.045),0 0 0 105px rgba(188,214,255,.03); pointer-events:none; }
   .workspaceHero::after { content:""; position:absolute; z-index:0; inset:0 0 0 42%; opacity:.62; background:radial-gradient(circle at 27% 30%,#c8e1ff 0 3px,transparent 4px),radial-gradient(circle at 59% 64%,#b7d7ff 0 4px,transparent 5px),radial-gradient(circle at 83% 22%,#c8e1ff 0 3px,transparent 4px),linear-gradient(32deg,transparent 49.8%,rgba(194,219,255,.2) 50%,transparent 50.2%),linear-gradient(145deg,transparent 49.8%,rgba(194,219,255,.15) 50%,transparent 50.2%); pointer-events:none; }
-  .mapPlaceholderOverlay { position:fixed; inset:0; z-index:360; display:grid; place-items:center; padding:24px; overflow:auto; overscroll-behavior:contain; background:rgba(7,27,86,.66); backdrop-filter:blur(10px); }
-  .mapPlaceholder { width:min(1100px,100%); max-height:calc(100dvh - 48px); overflow:auto; overscroll-behavior:contain; padding:24px; border:1px solid var(--line); border-radius:20px; background:#fff; color:var(--ink); box-shadow:0 24px 70px rgba(7,27,86,.22); }
-  .mapPlaceholder > header { display:flex; align-items:center; justify-content:space-between; gap:20px; padding-bottom:18px; border-bottom:1px solid var(--line); }
-  .mapPlaceholder h2 { margin:0; color:var(--navy); font:700 clamp(20px,2.6vw,28px)/1.5 Arial,"Microsoft YaHei",sans-serif; }
-  .mapPlaceholder header button { flex:none; min-height:44px; padding:10px 18px; border:1px solid var(--accent); border-radius:10px; background:var(--accent); color:#fff; cursor:pointer; font-size:14px; font-weight:700; }
-  .mapPlaceholder header button:hover { background:var(--navy); border-color:var(--navy); }
-  .mapPlaceholder > p { margin:18px 0; color:var(--muted); font-size:14px; line-height:1.8; overflow-wrap:anywhere; }
-  .mapPlaceholderCanvas { display:grid; place-items:center; width:100%; min-height:360px; height:min(58dvh,620px); padding:24px; border:1px solid var(--line); border-radius:14px; background:#f7faff; color:var(--muted); text-align:center; font-size:16px; }
 
   @media (min-width:1600px) {
     .reportsPage,.schedulePage { max-width:1680px; margin:auto; }
@@ -151,11 +144,6 @@
     .filterRow { grid-template-columns:repeat(3,minmax(0,1fr)); }
   }
   @media (max-width:760px) {
-    .mapPlaceholderOverlay { padding:10px; }
-    .mapPlaceholder { max-height:calc(100dvh - 20px); padding:18px 14px; border-radius:16px; }
-    .mapPlaceholder > header { gap:12px; }
-    .mapPlaceholder header button { padding:10px 13px; }
-    .mapPlaceholderCanvas { min-height:300px; height:62dvh; }
     .topbar .huiduLockup { gap:8px; }
     .topbar .huiduSlogan b { font-size:11px; }
     .topbar .huiduBrand.isCompact img { width:72px; }
@@ -175,6 +163,7 @@
     .workspaceShortcuts strong { font-size:14px; }
     .workspaceShortcuts small { font-size:12px; }
     .workspaceShortcuts > * > b { display:none; }
+    .workspaceShortcuts > .venueShortcut { grid-column:1/-1; }
     .mobileDetailActions > button:last-child { background:var(--paper); color:var(--muted); border-color:var(--line); }
     .searchDock { margin:0 20px 16px; padding:14px; grid-template-columns:minmax(0,1fr) auto; gap:12px; }
     .searchIntro { grid-column:1; grid-row:1; padding:0; }

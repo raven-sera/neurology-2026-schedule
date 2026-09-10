@@ -6,7 +6,7 @@ import { useDialog } from '../lib/useDialog';
 import { useLocalRecord } from '../lib/useLocalRecord';
 import { downloadCalendar, nextScheduledReport, reportInterval, scheduleConflicts } from '../lib/scheduleTools';
 import CalendarSchedule from './CalendarSchedule';
-import MapPlaceholder from './MapPlaceholder';
+const VenueNavigator = lazy(() => import('./VenueNavigator'));
 const CheckInCard = lazy(() => import('./CheckInCard'));
 const CheckInAtlas = lazy(() => import('./CheckInAtlas'));
 import type { ExportMode } from './ExportCenter';
@@ -326,13 +326,17 @@ function SiteHeader({ activePage }: { activePage: ActivePage }) {
   );
 }
 
-function Hero({ entries }: { entries: LibrarySummary[] }) {
+function Hero({ entries, onLocate }: { entries: LibrarySummary[]; onLocate: () => void }) {
   return <section className="workspaceHero" id="top">
     <div><p className="workspaceEyebrow">CMANCN 2026 · 9.11—9.13</p><h1>神经病学年会<em>2026</em></h1>
       <p>9.11—9.13 三日日程，检索 {reports.length} 条会议内容，收藏、排期与听会记录一处管理。</p>
       <dl>{HERO_METRICS.map(metric => <div key={metric.label}><dt>{metric.value}</dt><dd>{metric.label}</dd></div>)}</dl>
     </div>
-    <div className="workspaceShortcuts"><Link href="/schedule"><span>▦</span><div><strong>我的日程</strong><small>三日听会安排</small></div><b>→</b></Link><Link href="/library"><span>▤</span><div><strong>个人图书馆</strong><small>{entries.length ? `${entries.length} 场资料 · 随时继续阅读` : '笔记 · PPT · 录音归档'}</small></div><b>→</b></Link></div>
+    <div className="workspaceShortcuts">
+      <Link href="/schedule"><span>▦</span><div><strong>我的日程</strong><small>三日听会安排</small></div><b>→</b></Link>
+      <Link href="/library"><span>▤</span><div><strong>个人图书馆</strong><small>{entries.length ? `${entries.length} 场资料 · 随时继续阅读` : '笔记 · PPT · 录音归档'}</small></div><b>→</b></Link>
+      <button className="venueShortcut" type="button" onClick={() => onLocate()} aria-haspopup="dialog"><span aria-hidden>⌖</span><div><strong>会场地图</strong><small>三层原图 · 查会场与日程</small></div><b>→</b></button>
+    </div>
   </section>;
 }
 
@@ -825,12 +829,13 @@ export default function Explorer({ initialPage = 'reports' }: { initialPage?: Ac
 
   const openReport = useCallback(async (report: Report, options: NotebookOpenOptions = {}) => {
     const request = ++navigationRequest.current;
-    if (selectionRef.current && selectionRef.current.id !== report.id && !await flushNotebook()) return;
-    if (request !== navigationRequest.current) return;
+    if (selectionRef.current && selectionRef.current.id !== report.id && !await flushNotebook()) return false;
+    if (request !== navigationRequest.current) return false;
     setNoteOptions(options);
     setSelected(report);
     const nextHash = notebookHash(report.id, options);
     if (location.hash !== nextHash) history.pushState({ ...history.state, reportId: report.id }, '', nextHash);
+    return true;
   }, [flushNotebook]);
 
   const closeReport = useCallback(async () => {
@@ -859,6 +864,15 @@ export default function Explorer({ initialPage = 'reports' }: { initialPage?: Ac
       history.replaceState(history.state, '', url.pathname + url.search + url.hash);
     }
   }, []);
+
+  const openReportFromMap = useCallback(async (report: Report) => {
+    if (!await openReport(report)) return false;
+    const url = new URL(location.href);
+    url.searchParams.delete('neuro2026VenueReport');
+    history.replaceState({ ...history.state, neuro2026Venue: false }, '', url.pathname + url.search + url.hash);
+    setMapReport(undefined);
+    return true;
+  }, [openReport]);
 
 
   useEffect(() => {
@@ -944,7 +958,7 @@ export default function Explorer({ initialPage = 'reports' }: { initialPage?: Ac
         </aside>
       )}
 
-      <Hero entries={libraryEntries} />
+      <Hero entries={libraryEntries} onLocate={openVenueMap} />
 
       <SearchPanel
         query={query}
@@ -1074,7 +1088,18 @@ export default function Explorer({ initialPage = 'reports' }: { initialPage?: Ac
           returnLabel={initialPage === 'library' ? '返回图书馆' : initialPage === 'schedule' ? '返回日程' : '返回报告看板'}
         />
       )}
-      {mapReport !== undefined && <MapPlaceholder location={mapReport?.location} onClose={closeVenueMap} />}
+      {mapReport !== undefined && (
+        <Suspense fallback={<div className="moduleLoading moduleLoadingFixed" role="status">正在打开会场地图…<button type="button" onClick={closeVenueMap}>返回</button></div>}>
+          <VenueNavigator
+            key={mapReport?.id ?? 'overview'}
+            initialReport={mapReport}
+            scheduledReports={scheduledReports}
+            onToggleSchedule={toggleScheduledReport}
+            onOpenReport={openReportFromMap}
+            onClose={closeVenueMap}
+          />
+        </Suspense>
+      )}
       <Suspense fallback={<div className="moduleLoading moduleLoadingFixed" role="status">正在准备工具…</div>}>
       {exportRequest && (
         <ExportCenter
